@@ -41,7 +41,8 @@ public class DetalleModelImpl implements DetalleModel{
         mAPIService = ApiUtils.getAPIService();
 
         //mAPIService.getDetailsMovie(id_movie,Constants.API_KEY)
-        mAPIService.getDetailsMovie(Constants.API_KEY)
+        //mAPIService.getDetailsMovie(Constants.API_KEY)
+        mAPIService.getDetailsMovie(id_movie)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<String>() {

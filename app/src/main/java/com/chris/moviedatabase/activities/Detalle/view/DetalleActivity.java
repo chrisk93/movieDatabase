@@ -53,7 +53,7 @@ public class DetalleActivity extends AppCompatActivity implements DetalleView, V
 
     @Override
     public void muestraDatos(HashMap<String,String> datos){
-        textnombre.setText(datos.get("url"));
+        textnombre.setText(datos.get("name"));
         textId.setText(datos.get("id"));
         textOverview.setText(datos.get("overview"));
     }
@@ -96,6 +96,7 @@ public class DetalleActivity extends AppCompatActivity implements DetalleView, V
         HashMap<String,String> datos = new HashMap<>();
         datos.put("url", Constants.URL_IMAGE);
         datos.put("id",id);
+        datos.put("name",textnombre.getText().toString());
         datos.put("overview",textOverview.getText().toString());
         presenter.agregarBD(datos);
     }

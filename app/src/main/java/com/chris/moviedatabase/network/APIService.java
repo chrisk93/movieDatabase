@@ -1,5 +1,7 @@
 package com.chris.moviedatabase.network;
 
+import com.chris.moviedatabase.utils.Constants;
+
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -19,11 +21,12 @@ public interface APIService {
                                      @Query("query") String query);
 
     //@GET("movie/{movie_id}")
-    //@GET("movie/{movie_id}?api_key={api_key}")
-    @GET("movie/195884")
+    @GET("movie/{movie_id}?api_key="+Constants.API_KEY)
+    //@GET("movie/195884")
     @Headers({"Content-Type: application/json"})
+    Observable<String> getDetailsMovie(@Path("movie_id") String movie_id);
     //Observable<String> getDetailsMovie(@Path("movie_id") String movie_id, @Query("api_key") String api_key);
-    Observable<String> getDetailsMovie(@Query("api_key") String api_key);
+    //Observable<String> getDetailsMovie(@Query("api_key") String api_key);
 
 
 
