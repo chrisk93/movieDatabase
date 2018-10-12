@@ -30,7 +30,9 @@ public class ListMovie extends Fragment implements ListMovieView {
     ProgressDialog progressDialog;
     LinearLayout noData;
 
+
     AdapterMovies adapterMovies;
+    ArrayList<MovieVO> movieVOS;
 
     public ListMovie() {
         // Required empty public constructor
@@ -53,6 +55,11 @@ public class ListMovie extends Fragment implements ListMovieView {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerMovies.setLayoutManager(linearLayoutManager);
+        recyclerMovies.setHasFixedSize(true);
+
+        movieVOS = new ArrayList<>();
+        adapterMovies = new AdapterMovies(movieVOS, getActivity());
+        recyclerMovies.setAdapter(adapterMovies);
 
         textData.addTextChangedListener(new TextWatcher() {
             @Override
@@ -101,10 +108,12 @@ public class ListMovie extends Fragment implements ListMovieView {
     }
 
     @Override
-    public void inicializaAdapter(ArrayList<MovieVO> movieVOS) {
-        //ArrayList<MovieVO> movieVOS = new ArrayList<>();
-        adapterMovies = new AdapterMovies(movieVOS, getActivity());
-        recyclerMovies.setAdapter(adapterMovies);
+    public void inicializaAdapter(ArrayList<MovieVO> movieVOS1) {
+           movieVOS.addAll(movieVOS1);
+//        adapterMovies = new AdapterMovies(movieVOS1, getActivity());
+//        recyclerMovies.setAdapter(adapterMovies);
+        adapterMovies.notifyDataSetChanged();
+
 
         validaNohayDatos();
     }

@@ -2,8 +2,13 @@ package com.chris.moviedatabase.activities.Detalle.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +28,8 @@ public class DetalleActivity extends AppCompatActivity implements DetalleView, V
     private TextView textOverview;
     ProgressDialog progressDialog;
     DetallePresenter presenter;
-    Button btnAgregar;
+    //Button btnAgregar;
+    FloatingActionButton fab;
 
     String id;
 
@@ -32,12 +38,21 @@ public class DetalleActivity extends AppCompatActivity implements DetalleView, V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Detalle");
+
         textnombre = (TextView) findViewById(R.id.textnombre);
         textId = (TextView) findViewById(R.id.textId);
         textOverview = (TextView) findViewById(R.id.textOverview);
-        btnAgregar = (Button) findViewById(R.id.btnAgregar);
+        //btnAgregar = (Button) findViewById(R.id.btnAgregar);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
 
-        btnAgregar.setOnClickListener(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+            getWindow().setEnterTransition(new Fade());
+        }
 
         progressDialog = new ProgressDialog(this);
 
@@ -103,7 +118,7 @@ public class DetalleActivity extends AppCompatActivity implements DetalleView, V
 
     @Override
     public void onClick(View v) {
-        if (v == btnAgregar){
+        if (v == fab){
             agregarFav();
         }
     }

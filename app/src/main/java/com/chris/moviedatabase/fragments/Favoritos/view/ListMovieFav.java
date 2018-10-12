@@ -90,9 +90,9 @@ public class ListMovieFav extends Fragment implements ListFavView{
     }
 
     @Override
-    public void inicializaAdapter(ArrayList<MovieFavVO> movieVOS) {
-        //ArrayList<MovieVO> movieVOS = new ArrayList<>();
-        adapterMovies = new AdapterMoviesFav(movieVOS, getActivity(),this);
+    public void inicializaAdapter(ArrayList<MovieFavVO> movieVOS1) {
+        adapterMovies = new AdapterMoviesFav(movieVOS1, getActivity(),this);
+        recyclerFav.setHasFixedSize(true);
         recyclerFav.setAdapter(adapterMovies);
 
         validaNohayDatos();
