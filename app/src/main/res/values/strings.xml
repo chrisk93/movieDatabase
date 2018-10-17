@@ -6,9 +6,11 @@
 
     <string name="errorGeneral">Se ha generado un error</string>
     <string name="msgProgressDialog">Cargando..</string>
-    <string name="datos_no_enc">Sin Datos</string>
+    <string name="datos_no_enc">No se encontraron datos</string>
 
     <string name="transitionname_picture">transitionnamepicture</string>
     <string name="agregarfav">Agregar a Favoritos</string>
     <string name="agregado">Agregado Exitosamente</string>
+    <string name="no_favs">Aún no tienes favoritos</string>
+    <string name="pelicula_ya_agregada">Pelicula ya existe en la BD.</string>
 </resources>

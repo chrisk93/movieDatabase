@@ -34,8 +34,8 @@ public class Database {
         return sqLiteDatabase.rawQuery(sql,null);
     }
 
-    public void insert(String table,ContentValues contentValues){
-        sqLiteDatabase.insertWithOnConflict(table,null,contentValues,SQLiteDatabase.CONFLICT_IGNORE);
+    public int insert(String table,ContentValues contentValues){
+        return (int) sqLiteDatabase.insertWithOnConflict(table,null,contentValues,SQLiteDatabase.CONFLICT_IGNORE);
     }
     public void update(String table,ContentValues contentValues, String where){
         sqLiteDatabase.update(table,contentValues,where,null);

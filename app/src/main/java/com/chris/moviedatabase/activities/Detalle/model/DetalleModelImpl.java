@@ -101,9 +101,16 @@ public class DetalleModelImpl implements DetalleModel{
         contentValues.put("url",datos.get("url"));
         contentValues.put("name",datos.get("name"));
 
-        database.insert("Favoritos",contentValues);
+        long rta = database.insert("Favoritos",contentValues);
+        String mensajeRta = "";
 
-        presenter.mostrarMensaje(activity.getString(R.string.agregado));
+        if(rta != -1){
+            mensajeRta = activity.getString(R.string.agregado);
+        }else{
+            mensajeRta = activity.getString(R.string.pelicula_ya_agregada);
+        }
+
+        presenter.mostrarMensaje(mensajeRta);
 
         database.close();
     }

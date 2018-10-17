@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.chris.moviedatabase.R;
 import com.chris.moviedatabase.adapters.PageAdapter;
@@ -14,21 +15,21 @@ import com.chris.moviedatabase.fragments.Favoritos.view.ListMovieFav;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private TabLayout tabLayout1;
-    private ViewPager viewPager;
-
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.tabLayout1) TabLayout tabLayout1;
+    @BindView(R.id.viewPager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar= (Toolbar) findViewById(R.id.toolbar);
-        tabLayout1= (TabLayout) findViewById(R.id.tabLayout1);
-        viewPager= (ViewPager) findViewById(R.id.viewPager);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
         setUpViewPager();

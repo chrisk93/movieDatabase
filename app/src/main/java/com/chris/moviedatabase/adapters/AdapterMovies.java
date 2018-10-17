@@ -18,6 +18,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AdapterMovies extends RecyclerView.Adapter<AdapterMovies.ViewHolder> {
 
     private ArrayList<MovieVO> datosMovie;
@@ -57,19 +60,26 @@ public class AdapterMovies extends RecyclerView.Adapter<AdapterMovies.ViewHolder
 
     @Override
     public int getItemCount() {
-        return datosMovie.size();
+        int size;
+
+        if(datosMovie != null && !datosMovie.isEmpty()){
+            size = datosMovie.size();
+        }else{
+            size = 0;
+        }
+
+        return size;
+        //return datosMovie.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgMovie;
-        TextView textDescripcion;
-        CardView cardItem;
+        @BindView(R.id.imgMovie) ImageView imgMovie;
+        @BindView(R.id.textDescripcion) TextView textDescripcion;
+        @BindView(R.id.cardItem) CardView cardItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgMovie = (ImageView) itemView.findViewById(R.id.imgMovie);
-            textDescripcion = (TextView) itemView.findViewById(R.id.textDescripcion);
-            cardItem = (CardView)  itemView.findViewById(R.id.cardItem);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

@@ -21,15 +21,21 @@ import com.chris.moviedatabase.utils.Constants;
 
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetalleActivity extends AppCompatActivity implements DetalleView, View.OnClickListener {
 
-    private TextView textnombre;
-    private TextView textId;
-    private TextView textOverview;
+    @BindView(R.id.textnombre) TextView textnombre;
+    @BindView(R.id.textId) TextView textId;
+    @BindView(R.id.textOverview) TextView textOverview;
+    @BindView(R.id.fab) FloatingActionButton fab;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+
     ProgressDialog progressDialog;
     DetallePresenter presenter;
     //Button btnAgregar;
-    FloatingActionButton fab;
+
 
     String id;
 
@@ -38,15 +44,11 @@ public class DetalleActivity extends AppCompatActivity implements DetalleView, V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Detalle");
 
-        textnombre = (TextView) findViewById(R.id.textnombre);
-        textId = (TextView) findViewById(R.id.textId);
-        textOverview = (TextView) findViewById(R.id.textOverview);
-        //btnAgregar = (Button) findViewById(R.id.btnAgregar);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){

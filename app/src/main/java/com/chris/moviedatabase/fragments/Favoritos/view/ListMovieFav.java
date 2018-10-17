@@ -8,30 +8,30 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.chris.moviedatabase.R;
-import com.chris.moviedatabase.adapters.AdapterMovies;
 import com.chris.moviedatabase.adapters.AdapterMoviesFav;
 import com.chris.moviedatabase.fragments.Favoritos.presenter.ListFavPresenter;
 import com.chris.moviedatabase.fragments.Favoritos.presenter.ListFavPresenterImpl;
-import com.chris.moviedatabase.fragments.ListMov.presenter.ListMoviePresenter;
-import com.chris.moviedatabase.fragments.ListMov.presenter.ListMoviePresenterImpl;
 import com.chris.moviedatabase.vo.MovieFavVO;
-import com.chris.moviedatabase.vo.MovieVO;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 public class ListMovieFav extends Fragment implements ListFavView{
 
-    RecyclerView recyclerFav;
+    @BindView(R.id.recyclerFav) RecyclerView recyclerFav;
+    @BindView(R.id.noData) LinearLayout noData;
+    private Unbinder unbinder;
+
     ListFavPresenter presenter;
     ProgressDialog progressDialog;
-    LinearLayout noData;
-
     AdapterMoviesFav adapterMovies;
 
     public ListMovieFav() {
@@ -45,11 +45,9 @@ public class ListMovieFav extends Fragment implements ListFavView{
 
         View view = inflater.inflate(R.layout.fragment_list_movie_fav, container, false);
 
+        unbinder = ButterKnife.bind(this, view);
 
         progressDialog = new ProgressDialog(getContext());
-
-        noData = (LinearLayout) view.findViewById(R.id.noData);
-        recyclerFav = (RecyclerView) view.findViewById(R.id.recyclerFav);
 
         presenter = new ListFavPresenterImpl(getActivity(),this);
 
@@ -114,5 +112,9 @@ public class ListMovieFav extends Fragment implements ListFavView{
         presenter.eliminaRegistro(movieFavVO);
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

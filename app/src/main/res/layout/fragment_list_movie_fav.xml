@@ -18,7 +18,7 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
-            android:src="@drawable/icon_notfound"
+            android:src="@drawable/icon_fav"
             />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="@string/datos_no_enc"
+            android:text="@string/no_favs"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </LinearLayout>
 

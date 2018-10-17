@@ -19,6 +19,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AdapterMoviesFav extends RecyclerView.Adapter<AdapterMoviesFav.ViewHolder> {
 
     private ArrayList<MovieFavVO> datosMovie;
@@ -71,17 +74,14 @@ public class AdapterMoviesFav extends RecyclerView.Adapter<AdapterMoviesFav.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgMovie;
-        ImageView imgdelete;
-        TextView textDescripcion;
-        CardView cardItem;
+        @BindView(R.id.imgMovie) ImageView imgMovie;
+        @BindView(R.id.imgdelete) ImageView imgdelete;
+        @BindView(R.id.textDescripcion) TextView textDescripcion;
+        @BindView(R.id.cardItem) CardView cardItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgMovie = (ImageView) itemView.findViewById(R.id.imgMovie);
-            imgdelete = (ImageView) itemView.findViewById(R.id.imgdelete);
-            textDescripcion = (TextView) itemView.findViewById(R.id.textDescripcion);
-            cardItem = (CardView)  itemView.findViewById(R.id.cardItem);
+            ButterKnife.bind(this,itemView);
         }
     }
 }
